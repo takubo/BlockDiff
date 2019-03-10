@@ -36,7 +36,7 @@ fun! BlockDiff_GetBlock2_and_DiffExe() range
 
   let filetype2 = &l:filetype
 
-  echo 'BlockDiff: Block 2 got. Line:' (a:lastline - a:firstline + 1)
+  "echo 'BlockDiff: Block 2 got. Line:' (a:lastline - a:firstline + 1)
 
   " Open new tab, paste second selected block
   tabnew
@@ -61,7 +61,7 @@ fun! BlockDiff_GetBlock2_and_DiffExe() range
   let @a = regd
 
   redraw	" tabが変わったので、redしないとメッセ―ジが消えてしまう。
-  "echo 'BlockDiff: Block 2 got. Line:' (a:lastline - a:firstline + 1)
+  echo 'BlockDiff: Block 2 got. Line:' (a:lastline - a:firstline + 1)
   echo 'BlockDiff: Diff done.'
 endfun
 
