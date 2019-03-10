@@ -1,10 +1,10 @@
 scriptencoding utf-8
 " vim:set ts=8 sts=2 sw=2 tw=0:
 
-if exists('g:loaded_blockdiff') || (v:version < 700)
+if !exists('g:loaded_BlockDiff') || (v:version < 700)
   "finish
 endif
-let g:loaded_blockdiff = 1
+let g:loaded_BlockDiff = 1
 
 
 let s:save_cpo = &cpo
@@ -16,7 +16,7 @@ let s:block1 = ''
 let s:filetype1 = ''
 
 
-fun! BlockDiff_GetBlock1() range
+fun! BlockDiff#GetBlock1() range
   let regd = @a
   " copy selected block into 'a' register
   silent! exe a:firstline . "," . a:lastline . 'yank a'
@@ -30,7 +30,7 @@ fun! BlockDiff_GetBlock1() range
   echo 'BlockDiff: Block 1 got. Line:' (a:firstline) '-' (a:lastline) ' (' (a:lastline - a:firstline + 1) ')'
 endfun
 
-fun! BlockDiff_GetBlock2_and_DiffExe() range
+fun! BlockDiff#GetBlock2_and_Exe() range
   let regd = @a
   silent! exe a:firstline . "," . a:lastline . 'yank a'
 
@@ -64,15 +64,6 @@ fun! BlockDiff_GetBlock2_and_DiffExe() range
   echo 'BlockDiff: Block 2 got. Line:' (a:firstline) '-' (a:lastline) ' (' (a:lastline - a:firstline + 1) ')'
   echo 'BlockDiff: Diff done.'
 endfun
-
-
-command! -range BlockDiffGetBlock1       :<line1>,<line2>call BlockDiff_GetBlock1()
-command! -range BlockDiffGetBlock2       :<line1>,<line2>call BlockDiff_GetBlock2()
-command! -range BlockDiffGetBlock1andExe :<line1>,<line2>call BlockDiff_GetBlock1_and_DiffExe()
-command! -range BlockDiffGetBlock2andExe :<line1>,<line2>call BlockDiff_GetBlock2_and_DiffExe()
-
-vnoremap <silent> <leader>1 :BlockDiffGetBlock1<CR>
-vnoremap <silent> <leader>2 :BlockDiffGetBlock2andExe<CR>
 
 
 let &cpo = s:save_cpo
