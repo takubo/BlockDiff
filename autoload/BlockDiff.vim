@@ -2,7 +2,7 @@ scriptencoding utf-8
 " vim:set ts=8 sts=2 sw=2 tw=0:
 
 if !exists('g:loaded_BlockDiff') || (v:version < 700)
-  "finish
+  finish
 endif
 let g:loaded_BlockDiff = 1
 
