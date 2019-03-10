@@ -36,7 +36,7 @@ fun! BlockDiff_GetBlock2_and_DiffExe() range
 
   let filetype2 = &l:filetype
 
-  "echo 'BlockDiff: Block 2 got. Line:' (a:firstline) '-' (a:lastline) ' (' (a:lastline - a:firstline + 1) ')'
+  echo 'BlockDiff: Block 2 got. Line:' (a:firstline) '-' (a:lastline) ' (' (a:lastline - a:firstline + 1) ')'
 
   " Open new tab, paste second selected block
   tabnew
@@ -66,12 +66,13 @@ fun! BlockDiff_GetBlock2_and_DiffExe() range
 endfun
 
 
-command! -range BlockDiff1       :<line1>,<line2>call BlockDiff_GetBlock1()
-command! -range BlockDiff2       :<line1>,<line2>call BlockDiff_GetBlock2()
-command! -range BlockDiff2AndExe :<line1>,<line2>call BlockDiff_GetBlock2_and_DiffExe()
+command! -range BlockDiffGetBlock1       :<line1>,<line2>call BlockDiff_GetBlock1()
+command! -range BlockDiffGetBlock2       :<line1>,<line2>call BlockDiff_GetBlock2()
+command! -range BlockDiffGetBlock1andExe :<line1>,<line2>call BlockDiff_GetBlock1_and_DiffExe()
+command! -range BlockDiffGetBlock2andExe :<line1>,<line2>call BlockDiff_GetBlock2_and_DiffExe()
 
-vnoremap <leader>1 :BlockDiff1<CR>
-vnoremap <leader>2 :BlockDiff2AndExe<CR>
+vnoremap <silent> <leader>1 :BlockDiffGetBlock1<CR>
+vnoremap <silent> <leader>2 :BlockDiffGetBlock2andExe<CR>
 
 
 let &cpo = s:save_cpo
