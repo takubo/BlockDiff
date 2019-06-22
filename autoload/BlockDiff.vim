@@ -30,6 +30,7 @@ fun! BlockDiff#GetBlock1() range
   echo 'BlockDiff: Block 1 got. Line:' (a:firstline) '-' (a:lastline) ' (' (a:lastline - a:firstline + 1) ')'
 endfun
 
+
 fun! BlockDiff#GetBlock2_and_Exe() range
   let regd = @a
   silent! exe a:firstline . "," . a:lastline . 'yank a'
@@ -60,7 +61,7 @@ fun! BlockDiff#GetBlock2_and_Exe() range
   " restore unnamed register
   let @a = regd
 
-  redraw	" tabが変わったので、redしないとメッセ―ジが消えてしまう。
+  redraw	" Tabが変わったので、redrawしないとメッセ―ジが消えてしまう。
   echo 'BlockDiff: Block 2 got. Line:' (a:firstline) '-' (a:lastline) ' (' (a:lastline - a:firstline + 1) ')'
   echo 'BlockDiff: Diff done.'
 endfun
